@@ -9,7 +9,7 @@ const Login = () => {
   const handleLogin = async () => {
     console.log(email, password);
     // Send a POST request to the server with the user's email and password
-    let result = await fetch("http://localhost:5000/login", {
+    let result = await fetch("http://13.235.190.97:5000/login", {
       method: "POST",
       body: JSON.stringify({ email, password }),
       headers: {

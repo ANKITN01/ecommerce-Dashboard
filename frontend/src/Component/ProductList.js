@@ -11,7 +11,7 @@ const ProductList = () => {
 
   const getProducts = async () => {
     try {
-      let result = await fetch("http://localhost:5000/products");
+      let result = await fetch("http://13.235.190.97:5000/products");
       if (result.ok) {
         const data = await result.json();
         setProducts(data);
@@ -23,9 +23,9 @@ const ProductList = () => {
       console.error("Error fetching products:", error);
       // Handle the error, e.g., set an error state or show an error message
     }
-  }
+}
 
-  const deleteProduct = async (id) => {
+const deleteProduct = async (id) => {
     console.log(id);
     if (window.confirm("Are you sure you want to delete this product?")) {
       try {

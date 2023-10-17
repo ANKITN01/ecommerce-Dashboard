@@ -15,9 +15,7 @@ const SignUp = () => {
   };
 
   const validatePassword = (input) => {
-    // You can add your own password validation logic here
-    // For example, checking if it's a minimum length or contains special characters
-    return input.length >= 8; // Minimum length of 8 characters
+    return input.length >= 8; 
   };
 
   const collectData = async () => {
@@ -37,7 +35,7 @@ const SignUp = () => {
     }
 
     try {
-      let result = await fetch("http://localhost:5000/register", {
+      let result = await fetch("http://13.235.190.97:5000/register", {
         method: "POST",
         body: JSON.stringify({ name, email, password }),
         headers: {

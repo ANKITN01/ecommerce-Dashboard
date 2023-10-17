@@ -15,7 +15,7 @@ const UpdateProduct = () => {
 
   const getProductDetails = async () => {
     try {
-      let result = await fetch(`http://localhost:5000/product/${params.id}`);
+      let result = await fetch(`http://13.235.190.97:5000/product/${params.id}`);
       if (result.ok) {
         const data = await result.json();
         console.warn(data);
@@ -36,7 +36,7 @@ const UpdateProduct = () => {
   const updateProduct = async () => {
     try {
       console.log(name, price, category, company);
-      let result = await fetch(`http://localhost:5000/product/${params.id}`, {
+      let result = await fetch(`http://13.235.190.97:5000/product/${params.id}`, {
         method: "PUT",
         body: JSON.stringify({ name, price, category, company }),
         headers: {

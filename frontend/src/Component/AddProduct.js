@@ -12,7 +12,7 @@ const AddProduct = () => {
     if (user) {
       const userId = user._id;
       try {
-        const response = await fetch("http://localhost:5000/add-product", {
+        const response = await fetch("http://13.235.190.97:5000/add-product", {
           method: "POST",
           body: JSON.stringify({ name, price, category, company, userId }),
           headers: {
