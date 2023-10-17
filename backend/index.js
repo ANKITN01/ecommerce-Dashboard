@@ -8,7 +8,7 @@ const config = require('./db/config'); // Load environment variables
 const app = express();
 
 // Connect to MongoDB
-mongoose.connect('mongodb://localhost:27017/ecommDashboard', {
+mongoose.connect('mongodb://13.235.190.97:27017/ecommDashboard', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
@@ -61,7 +61,6 @@ app.post("/login", async (req, resp) => {
   }
 });
 
-
 app.post("/add-product", async (req, resp) => {
   try {
     let product = new Product(req.body);
@@ -84,7 +83,6 @@ app.get("/products", async (req, resp) => {
     resp.status(500).send({ error: "An error occurred while fetching the products." });
   }
 });
-
 
 app.delete("/product/:id", async (req, resp) => {
   try {
