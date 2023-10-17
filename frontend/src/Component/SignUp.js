@@ -8,15 +8,33 @@ const SignUp = () => {
   const navigate = useNavigate();
   const [error, setError] = useState(null);
 
-  useEffect(() => {
-    const auth = localStorage.getItem("user");
-    if (auth) {
-      navigate("/");
-    }
-  });
+  const validateEmail = (input) => {
+    // A simple email validation regex
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(input);
+  };
 
-  async function collectData() {
-    console.log(name, email, password);
+  const validatePassword = (input) => {
+    // You can add your own password validation logic here
+    // For example, checking if it's a minimum length or contains special characters
+    return input.length >= 8; // Minimum length of 8 characters
+  };
+
+  const collectData = async () => {
+    if (!name || !email || !password) {
+      setError("All fields are required");
+      return;
+    }
+
+    if (!validateEmail(email)) {
+      setError("Invalid email address");
+      return;
+    }
+
+    if (!validatePassword(password)) {
+      setError("Password must be at least 8 characters long");
+      return;
+    }
 
     try {
       let result = await fetch("http://localhost:5000/register", {
@@ -40,7 +58,7 @@ const SignUp = () => {
       console.error("Error during registration:", error);
       setError("Registration failed");
     }
-  }
+  };
 
   return (
     <div className="register">
